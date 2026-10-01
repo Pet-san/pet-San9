@@ -20,10 +20,28 @@ function renderProductCard(product) {
   else if (product.featured) badges.push('<span class="badge badge-featured">مميز</span>');
   if (outOfStock) badges.push('<span class="badge badge-out-abs">غير متوفر</span>');
 
-  const optionsCount = ((product.colors && product.colors.length) || 0) + ((product.variants && product.variants.length) || 0);
-  if (optionsCount > 1) {
-    badges.push('<span class="badge badge-variants">' + iconSvg("layers") + optionsCount + ' خيارات</span>');
+  // حساب الخيارات (نكهات/ألوان، أوزان/أحجام، أو خيارات نصية)
+  const colorsLen = (product.colors && product.colors.length) || 0;
+  const sizesLen = (product.sizes && product.sizes.length) || 0;
+  const variantsLen = (product.variants && product.variants.length) || 0;
+
+  let totalOptions = 0;
+  if (colorsLen > 0 || sizesLen > 0) {
+    totalOptions = colorsLen + sizesLen;
+  } else if (variantsLen > 0) {
+    totalOptions = variantsLen;
   }
+
+  const hasOptions = totalOptions > 1 || (product.variants && product.variants.length > 0) || Store.hasVariantMatrix(product);
+
+  let optionsHtml = "";
+  if (hasOptions) {
+    const labelText = totalOptions > 1 ? (totalOptions + " خيارات متوفرة") : "خيارات متعددة";
+    optionsHtml = '<div class="product-options-chip">' + iconSvg("layers") + '<span>' + labelText + '</span></div>';
+  }
+
+  const btnIcon = hasOptions ? (iconSvg("sliders") || iconSvg("cart")) : iconSvg("cart");
+  const btnTitle = outOfStock ? "غير متوفر" : (hasOptions ? "اختر المواصفات" : "أضف للسلة");
 
   return (
     '<article class="product-card">' +
@@ -34,13 +52,14 @@ function renderProductCard(product) {
       '<div class="product-body">' +
         '<span class="product-cat">' + escapeHtml(Store.getCategoryName(product.categoryId)) + "</span>" +
         '<h3 class="product-name"><a href="product.html?id=' + encodeURIComponent(product.id) + '">' + escapeHtml(product.name) + "</a></h3>" +
+        optionsHtml +
         '<div class="product-foot">' +
           '<span class="price">' + formatPrice(product.price) + "</span>" +
           '<div class="product-actions">' +
             '<button class="btn btn-primary" ' + (outOfStock ? "disabled" : "") +
-              ' title="' + (outOfStock ? "غير متوفر" : "أضف للسلة") + '"' +
+              ' title="' + btnTitle + '"' +
               ' onclick="quickAddToCart(' + jsStr(product.id) + ')">' +
-              iconSvg("cart") +
+              btnIcon +
             "</button>" +
           "</div>" +
         "</div>" +
