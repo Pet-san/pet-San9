@@ -20,7 +20,6 @@ function renderProductCard(product) {
   else if (product.featured) badges.push('<span class="badge badge-featured">مميز</span>');
   if (outOfStock) badges.push('<span class="badge badge-out-abs">غير متوفر</span>');
 
-  // حساب الخيارات (نكهات/ألوان، أوزان/أحجام، أو خيارات نصية)
   const colorsLen = (product.colors && product.colors.length) || 0;
   const sizesLen = (product.sizes && product.sizes.length) || 0;
   const variantsLen = (product.variants && product.variants.length) || 0;
@@ -36,12 +35,9 @@ function renderProductCard(product) {
 
   let optionsHtml = "";
   if (hasOptions) {
-    const labelText = totalOptions > 1 ? (totalOptions + " خيارات متوفرة") : "خيارات متعددة";
+    const labelText = totalOptions > 1 ? (totalOptions + " خيارات متوفرة") : "عدة خيارات";
     optionsHtml = '<div class="product-options-chip">' + iconSvg("layers") + '<span>' + labelText + '</span></div>';
   }
-
-  const btnIcon = hasOptions ? (iconSvg("sliders") || iconSvg("cart")) : iconSvg("cart");
-  const btnTitle = outOfStock ? "غير متوفر" : (hasOptions ? "اختر المواصفات" : "أضف للسلة");
 
   return (
     '<article class="product-card">' +
@@ -57,9 +53,9 @@ function renderProductCard(product) {
           '<span class="price">' + formatPrice(product.price) + "</span>" +
           '<div class="product-actions">' +
             '<button class="btn btn-primary" ' + (outOfStock ? "disabled" : "") +
-              ' title="' + btnTitle + '"' +
+              ' title="' + (outOfStock ? "غير متوفر" : (hasOptions ? "اختر المواصفات" : "أضف للسلة")) + '"' +
               ' onclick="quickAddToCart(' + jsStr(product.id) + ')">' +
-              btnIcon +
+              iconSvg("cart") +
             "</button>" +
           "</div>" +
         "</div>" +
