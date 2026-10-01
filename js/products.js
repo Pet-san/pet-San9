@@ -34,7 +34,7 @@ function renderProductCard(product) {
   const hasOptions = totalOptions > 1 || (product.variants && product.variants.length > 0) || Store.hasVariantMatrix(product);
 
   if (hasOptions) {
-    // إرجاع الرقم مع كلمة خيارات مع الحفاظ على الحجم الصغير
+    // إرجاع الرقم مع كلمة "خيارات" بحجم صغير ومضغوط متطابق مع الرئيسية
     const labelText = totalOptions > 1 ? (totalOptions + " خيارات") : "خيارات";
     badges.push('<span class="badge badge-variants" style="font-size: 11px; padding: 4px 8px; gap: 4px; bottom: 6px; right: 6px;">' + iconSvg("layers") + '<span>' + labelText + '</span></span>');
   }
