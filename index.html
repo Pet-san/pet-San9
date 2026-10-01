@@ -6,7 +6,7 @@
   <title>الرئيسية | متجرك الإلكتروني</title>
   <meta name="description" content="تصفّح منتجاتنا واطلب مباشرة عبر واتساب بسهولة وسرعة.">
   <link rel="icon" href="assets/logo/logo.png">
-  <link rel="stylesheet" href="css/style.css?v=42">
+  <link rel="stylesheet" href="css/style.css?v=43">
 <style>
   /* === التعديلات التنسيقية وسلايدر العروض الترويجية === */
   .hero-art { background: none !important; box-shadow: none !important; border-radius: 0 !important; width: 100% !important; }
@@ -54,7 +54,10 @@
 
   /* تنسيقات الهواتف والشاشات الصغيرة */
   @media (max-width: 768px) {
-    .hero-art { margin-top: 20px !important; }
+    /* التعديل 1: تقليل المسافة بين الميزات والإعلانات */
+    .hero-trust { margin-bottom: 5px !important; }
+    .hero-art { margin-top: 5px !important; } 
+
     .section { padding-block: 14px !important; }
     .hero { padding-block: 16px 20px !important; }
     .section-head { 
@@ -68,8 +71,15 @@
       font-size: 0.8rem !important;
     }
 
-    .cat-chip { width: 95px !important; padding: 12px 8px !important; gap: 6px !important; }
-    .cat-chip .cat-icon { width: 62px !important; height: 62px !important; }
+    /* التعديل 2: جعل بطاقات الأقسام مربعة واستغلال الفراغ */
+    .cat-chip { 
+      width: 105px !important; 
+      aspect-ratio: 1 / 1 !important; 
+      justify-content: center !important; 
+      padding: 10px !important; 
+      gap: 8px !important; 
+    }
+    .cat-chip .cat-icon { width: 58px !important; height: 58px !important; }
     .cat-chip .cat-icon svg { width: 30px !important; height: 30px !important; }
     .cat-chip span.name { font-size: 0.95rem !important; font-weight: 700 !important; }
 
@@ -107,9 +117,9 @@
     <div class="hero-blob"></div>
     <div class="container hero-inner">
       <div class="hero-copy">
-        <div class="hero-eyebrow-free">✨ كل ما يحتاجه اليفك في مكان واحد</div>
-        <h1>مستلزمات تستحقها عائلتك الصغيرة</h1>
-        <p>مجموعة مختارة بعناية، وطلب سهل ومباشر دون أي تعقيد.</p>
+        <div class="hero-eyebrow-free">✨ كل ما تحتاجه في مكان واحد</div>
+        <h1>تسوّق أفضل المنتجات بسهولة وثقة</h1>
+        <p>مجموعة مختارة بعناية، وطلب سهل ومباشر عبر واتساب دون أي تعقيد.</p>
         <div class="hero-cta">
           <a href="products.html" class="btn btn-primary">تسوق الآن</a>
           <a href="#categories" class="btn btn-outline">تصفح الأقسام</a>
@@ -153,7 +163,7 @@
       <div class="section-head">
         <div>
           <h2 style="color: var(--danger);">🔥 عروض خاصة</h2>
-          <p> تخفيضات وأسعار مميزة لفترة محدودة!</p>
+          <p>تخفيضات وأسعار مميزة لفترة محدودة، لا تفوتها!</p>
         </div>
         <a href="products.html?filter=offer" class="btn btn-outline btn-sm">عرض الكل</a>
       </div>
@@ -186,7 +196,7 @@
         <div class="feature-card">
           <div class="icon">__ICON_TRUCK__</div>
           <h3>توصيل سريع وموثوق</h3>
-          <p>توصيل سريع داخل المدينة، وخلال أيام قليلة لباقي المحافظات.</p>
+          <p>توصيل سريع داخل المدينة، وخلال أيام قليلة لباقي المناطق.</p>
         </div>
         <div class="feature-card">
           <div class="icon">__ICON_SHIELD__</div>
@@ -222,13 +232,13 @@
   
 <div id="site-footer"></div>
 
-<script src="js/config.js?v=42"></script>
-<script src="js/icons.js?v=42"></script>
+<script src="js/config.js?v=43"></script>
+<script src="js/icons.js?v=43"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-<script src="js/store.js?v=42"></script>
-<script src="js/whatsapp.js?v=42"></script>
-<script src="js/app.js?v=42"></script>
+<script src="js/store.js?v=43"></script>
+<script src="js/whatsapp.js?v=43"></script>
+<script src="js/app.js?v=43"></script>
 <script>
   let slideInterval = null;
 
@@ -264,7 +274,6 @@
     const hasOptions = totalOptions > 1 || (product.variants && product.variants.length > 0) || Store.hasVariantMatrix(product);
 
     if (hasOptions) {
-      // التعديل: إرجاع الرقم مع كلمة "خيارات" بحجم صغير ومضغوط
       const labelText = totalOptions > 1 ? (totalOptions + " خيارات") : "خيارات";
       badges.push('<span class="badge badge-variants" style="font-size: 11px; padding: 4px 8px; gap: 4px; bottom: 6px; right: 6px;">' + iconSvg("layers") + '<span>' + labelText + '</span></span>');
     }
