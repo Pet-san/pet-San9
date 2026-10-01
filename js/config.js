@@ -42,5 +42,5 @@ const STORE_CONFIG = {
   imgbbApiKey: "45c9c2dde4dc15161fe70cc9a99df094",
 
   // === ImageKit (تحسين وضغط الصور عبر CDN) ===
-  imageKitEndpoint: ""
+  imageKitEndpoint: "https://ik.imagekit.io/petshop/"
 };
