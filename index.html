@@ -11,8 +11,40 @@
   /* === التعديلات التنسيقية وسلايدر العروض الترويجية === */
   .hero-art { background: none !important; box-shadow: none !important; border-radius: 0 !important; width: 100% !important; }
   
-/* إصلاح الحجم ومنع تمدد الإعلان الشاذ عند تغيير الزوم */
-  @media (min-width: 768px) {
+/* تنسيق شاشات التابلت والآيباد (768px إلى 1023px): جعل الإعلان كبيراً وبارزاً فوق/تحت النصوص */
+  @media (min-width: 768px) and (max-width: 1023px) {
+      .hero-inner {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          gap: 24px !important;
+          width: 100% !important;
+      }
+      .hero-copy {
+          width: 100% !important;
+          text-align: center !important;
+      }
+      .hero-copy h1 {
+          font-size: 2.4rem !important;
+      }
+      .hero-cta, .hero-trust {
+          justify-content: center !important;
+      }
+      .hero-art {
+          width: 100% !important;
+          max-width: 700px !important; /* حجم عريض وكبير جداً مناسب للتابلت */
+          margin: 0 auto !important;
+      }
+      .promo-slider-container {
+          width: 100% !important;
+          aspect-ratio: 16 / 9 !important;
+          max-height: 420px !important;
+          border-radius: 22px !important;
+      }
+  }
+
+  /* تنسيق شاشات سطح المكتب والحاسوب (1024px فما فوق): العرض الأفقي المتناسق */
+  @media (min-width: 1024px) {
       .hero-inner {
           display: flex !important;
           align-items: center !important;
@@ -26,20 +58,20 @@
           text-align: right !important;
       }
       .hero-copy h1 {
-          font-size: clamp(2rem, 2.8vw, 3.2rem) !important;
+          font-size: clamp(2.2rem, 3vw, 3.4rem) !important;
       }
       .hero-art {
-          flex: 1.2 !important;
+          flex: 1.25 !important;
           width: 100% !important;
-          max-width: 650px !important; /* يمنع الإعلان من الانفجار خارج الحاوية عند الزوم */
-          min-width: 380px !important;
+          max-width: 650px !important;
+          min-width: 400px !important;
           margin: 0 !important;
       }
       .promo-slider-container {
           width: 100% !important;
-          max-height: 400px !important; /* سقف أقصى للارتفاع ليبقى متناسقاً دائماً */
           aspect-ratio: 16 / 9 !important;
-          border-radius: 20px !important;
+          max-height: 390px !important;
+          border-radius: 22px !important;
       }
   }
   /* ضبط اتجاه السلايدر LTR لضمان انزلاق الصور بشكل سليم دون فراغات */
