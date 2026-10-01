@@ -34,9 +34,8 @@ function renderProductCard(product) {
   const hasOptions = totalOptions > 1 || (product.variants && product.variants.length > 0) || Store.hasVariantMatrix(product);
 
   if (hasOptions) {
-    // إزالة كلمة "متوفرة" لتصبح الشارة صغيرة ومضغوطة
-    const labelText = totalOptions > 1 ? (totalOptions + " خيارات") : "خيارات";
-    badges.push('<span class="badge badge-variants">' + iconSvg("layers") + '<span>' + labelText + '</span></span>');
+    // تم التعديل: إبقاء كلمة "خيارات" فقط وتصغير حجم الشارة لتصبح أصغر ولا تغطي الصورة
+    badges.push('<span class="badge badge-variants" style="font-size: 11px; padding: 4px 8px; gap: 4px; bottom: 6px; right: 6px;">' + iconSvg("layers") + '<span>خيارات</span></span>');
   }
 
   return (
