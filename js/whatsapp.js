@@ -1,6 +1,6 @@
 /* ==========================================================================
    whatsapp.js
-   تنسيق العملة (دينار عراقي) + بناء روابط واتساب مع نافذة معلومات التوصيل
+   تنسيق العملة (دينار عراقي) + بناء روابط واتساب مع نافذة معلومات التوصيل والملاحظات
    ========================================================================== */
 
 function formatPrice(amount) {
@@ -21,7 +21,7 @@ function showDeliveryModal(onConfirm) {
     modal.id = "deliveryModal";
     modal.className = "modal-overlay";
     modal.innerHTML =
-      '<div class="modal-card" style="max-width: 400px;">' +
+      '<div class="modal-card" style="max-width: 400px; width: 90%; max-height: 90vh; overflow-y: auto;">' +
         '<div class="modal-head">' +
           '<h3 style="margin:0;">معلومات التوصيل</h3>' +
           '<button class="close-modal" id="closeDeliveryModal" type="button">' + iconSvg("close") + '</button>' +
@@ -32,6 +32,7 @@ function showDeliveryModal(onConfirm) {
           '<div class="field"><label>المنطقة</label><input type="text" id="delArea" placeholder="مثال: حي الحسين" required></div>' +
           '<div class="field"><label>أقرب نقطة دالة (اختياري)</label><input type="text" id="delLandmark" placeholder="مثال: قرب مجسر..."></div>' +
           '<div class="field"><label>رقم الهاتف</label><input type="tel" id="delPhone" placeholder="مثال: 07700000000" required></div>' +
+          '<div class="field"><label>ملاحظات (اختياري)</label><textarea id="delNotes" placeholder="مثال: التوصيل مساءً، أو أي تفاصيل أخرى..." style="min-height: 60px;"></textarea></div>' +
           '<button type="submit" class="btn btn-whatsapp btn-block" style="margin-top:20px;">تأكيد وإرسال عبر واتساب</button>' +
         '</form>' +
       '</div>';
@@ -46,6 +47,8 @@ function showDeliveryModal(onConfirm) {
   document.getElementById("delArea").value = "";
   document.getElementById("delLandmark").value = "";
   document.getElementById("delPhone").value = "";
+  const notesField = document.getElementById("delNotes");
+  if (notesField) notesField.value = "";
 
   const form = document.getElementById("deliveryForm");
   const newForm = form.cloneNode(true);
@@ -59,7 +62,8 @@ function showDeliveryModal(onConfirm) {
       gov: document.getElementById("delGov").value.trim(),
       area: document.getElementById("delArea").value.trim(),
       landmark: document.getElementById("delLandmark").value.trim() || "لا يوجد",
-      phone: document.getElementById("delPhone").value.trim()
+      phone: document.getElementById("delPhone").value.trim(),
+      notes: document.getElementById("delNotes") ? document.getElementById("delNotes").value.trim() : ""
     };
     modal.classList.remove("open"); 
     onConfirm(info); 
@@ -111,6 +115,7 @@ function buildProductWhatsAppLink(product, qty, info, selection) {
     "▪️ المنطقة: *" + info.area + "*",
     "▪️ أقرب نقطة دالة: " + info.landmark,
     "▪️ رقم الهاتف: *" + info.phone + "*",
+    info.notes ? "📝 *ملاحظات:* " + info.notes : null,
     "",
     "أنتظر تأكيدكم لإتمام الطلب، شكراً لكم! 🙏"
   ].filter(Boolean);
@@ -143,6 +148,9 @@ function buildCartWhatsAppLink(cartLines, products, info) {
   messageLines.push("▪️ المنطقة: *" + info.area + "*");
   messageLines.push("▪️ أقرب نقطة دالة: " + info.landmark);
   messageLines.push("▪️ رقم الهاتف: *" + info.phone + "*");
+  if (info.notes) {
+    messageLines.push("📝 *ملاحظات:* " + info.notes);
+  }
   messageLines.push("");
   messageLines.push("أنتظر تأكيدكم لإتمام الطلب، شكراً لكم! 🙏");
 
@@ -167,7 +175,8 @@ function orderSingleProductViaWhatsApp(product, qty, selection) {
         gov: info.gov,
         area: info.area,
         landmark: info.landmark,
-        phone: info.phone
+        phone: info.phone,
+        notes: info.notes || ""
       },
       items: [{
         productId: product.id,
@@ -225,7 +234,8 @@ function orderCartViaWhatsApp() {
         gov: info.gov,
         area: info.area,
         landmark: info.landmark,
-        phone: info.phone
+        phone: info.phone,
+        notes: info.notes || ""
       },
       items: items,
       total: total
