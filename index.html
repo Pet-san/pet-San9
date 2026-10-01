@@ -11,24 +11,32 @@
   /* === التعديلات التنسيقية وسلايدر العروض الترويجية === */
   .hero-art { background: none !important; box-shadow: none !important; border-radius: 0 !important; width: 100% !important; }
   
-  /* إصلاح الحجم والتقسيم في وضع سطح المكتب */
- /* إصلاح الحجم والتقسيم في وضع سطح المكتب وتكبير الإعلان */
+/* تكبير لوحة الإعلانات بالكامل في الحاسوب واستغلال كامل المساحة */
   @media (min-width: 768px) {
       .hero-inner {
-          display: flex !important;
+          display: grid !important;
+          grid-template-columns: 1fr 1.3fr !important;
           align-items: center !important;
-          justify-content: space-between !important;
-          gap: 48px !important;
+          gap: 40px !important;
+          width: 100% !important;
       }
       .hero-copy {
-          flex: 1 !important;
           text-align: right !important;
+          max-width: 100% !important;
+      }
+      .hero-copy h1 {
+          font-size: clamp(2.3rem, 3.2vw, 3.6rem) !important;
       }
       .hero-art {
-          flex: 1.35 !important;
-          max-width: 750px !important;
-          min-width: 480px !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          min-width: 0 !important;
           margin: 0 !important;
+      }
+      .promo-slider-container {
+          width: 100% !important;
+          aspect-ratio: 16 / 9 !important;
+          border-radius: 24px !important;
       }
   }
 
