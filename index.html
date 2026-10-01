@@ -264,8 +264,9 @@
     const hasOptions = totalOptions > 1 || (product.variants && product.variants.length > 0) || Store.hasVariantMatrix(product);
 
     if (hasOptions) {
-      // تعديل هنا لمطابقة products.js
-      badges.push('<span class="badge badge-variants" style="font-size: 11px; padding: 4px 8px; gap: 4px; bottom: 6px; right: 6px;">' + iconSvg("layers") + '<span>خيارات</span></span>');
+      // التعديل: إرجاع الرقم مع كلمة "خيارات" بحجم صغير ومضغوط
+      const labelText = totalOptions > 1 ? (totalOptions + " خيارات") : "خيارات";
+      badges.push('<span class="badge badge-variants" style="font-size: 11px; padding: 4px 8px; gap: 4px; bottom: 6px; right: 6px;">' + iconSvg("layers") + '<span>' + labelText + '</span></span>');
     }
 
     return (
