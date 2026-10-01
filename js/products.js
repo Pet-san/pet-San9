@@ -33,10 +33,10 @@ function renderProductCard(product) {
 
   const hasOptions = totalOptions > 1 || (product.variants && product.variants.length > 0) || Store.hasVariantMatrix(product);
 
-  let optionsHtml = "";
   if (hasOptions) {
     const labelText = totalOptions > 1 ? (totalOptions + " خيارات متوفرة") : "عدة خيارات";
-    optionsHtml = '<div class="product-options-chip">' + iconSvg("layers") + '<span>' + labelText + '</span></div>';
+    // إضافة بادج الخيارات فوق الصورة في الزاوية السفلية
+    badges.push('<span class="badge badge-variants">' + iconSvg("layers") + labelText + '</span>');
   }
 
   return (
@@ -48,7 +48,6 @@ function renderProductCard(product) {
       '<div class="product-body">' +
         '<span class="product-cat">' + escapeHtml(Store.getCategoryName(product.categoryId)) + "</span>" +
         '<h3 class="product-name"><a href="product.html?id=' + encodeURIComponent(product.id) + '">' + escapeHtml(product.name) + "</a></h3>" +
-        optionsHtml +
         '<div class="product-foot">' +
           '<span class="price">' + formatPrice(product.price) + "</span>" +
           '<div class="product-actions">' +
