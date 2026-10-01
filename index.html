@@ -6,7 +6,7 @@
   <title>الرئيسية | متجرك الإلكتروني</title>
   <meta name="description" content="تصفّح منتجاتنا واطلب مباشرة عبر واتساب بسهولة وسرعة.">
   <link rel="icon" href="assets/logo/logo.png">
-  <link rel="stylesheet" href="css/style.css?v=41">
+  <link rel="stylesheet" href="css/style.css?v=42">
 <style>
   /* === التعديلات التنسيقية وسلايدر العروض الترويجية === */
   .hero-art { background: none !important; box-shadow: none !important; border-radius: 0 !important; width: 100% !important; }
@@ -222,13 +222,13 @@
   
 <div id="site-footer"></div>
 
-<script src="js/config.js?v=41"></script>
-<script src="js/icons.js?v=41"></script>
+<script src="js/config.js?v=42"></script>
+<script src="js/icons.js?v=42"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-<script src="js/store.js?v=41"></script>
-<script src="js/whatsapp.js?v=41"></script>
-<script src="js/app.js?v=41"></script>
+<script src="js/store.js?v=42"></script>
+<script src="js/whatsapp.js?v=42"></script>
+<script src="js/app.js?v=42"></script>
 <script>
   let slideInterval = null;
 
@@ -264,9 +264,8 @@
     const hasOptions = totalOptions > 1 || (product.variants && product.variants.length > 0) || Store.hasVariantMatrix(product);
 
     if (hasOptions) {
-      // إزالة كلمة "متوفرة" لتصبح الشارة صغيرة ومضغوطة
-      const labelText = totalOptions > 1 ? (totalOptions + " خيارات") : "خيارات";
-      badges.push('<span class="badge badge-variants">' + iconSvg("layers") + '<span>' + labelText + '</span></span>');
+      // تعديل هنا لمطابقة products.js
+      badges.push('<span class="badge badge-variants" style="font-size: 11px; padding: 4px 8px; gap: 4px; bottom: 6px; right: 6px;">' + iconSvg("layers") + '<span>خيارات</span></span>');
     }
 
     return (
@@ -409,7 +408,7 @@
             if(index < 0) index = ads.length - 1;
             if(index >= ads.length) index = 0;
             currentIndex = index;
-            track.style.transform = `translateX(${currentIndex * 100}%)`;
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
             dots.forEach(d => d.classList.remove('active'));
             if(dots[currentIndex]) dots[currentIndex].classList.add('active');
         }
