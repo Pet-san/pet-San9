@@ -11,35 +11,37 @@
   /* === التعديلات التنسيقية وسلايدر العروض الترويجية === */
   .hero-art { background: none !important; box-shadow: none !important; border-radius: 0 !important; width: 100% !important; }
   
-/* تكبير لوحة الإعلانات بالكامل في الحاسوب واستغلال كامل المساحة */
+/* إصلاح الحجم ومنع تمدد الإعلان الشاذ عند تغيير الزوم */
   @media (min-width: 768px) {
       .hero-inner {
-          display: grid !important;
-          grid-template-columns: 1fr 1.3fr !important;
+          display: flex !important;
           align-items: center !important;
+          justify-content: space-between !important;
           gap: 40px !important;
           width: 100% !important;
       }
       .hero-copy {
+          flex: 1 !important;
+          min-width: 320px !important;
           text-align: right !important;
-          max-width: 100% !important;
       }
       .hero-copy h1 {
-          font-size: clamp(2.3rem, 3.2vw, 3.6rem) !important;
+          font-size: clamp(2rem, 2.8vw, 3.2rem) !important;
       }
       .hero-art {
+          flex: 1.2 !important;
           width: 100% !important;
-          max-width: 100% !important;
-          min-width: 0 !important;
+          max-width: 650px !important; /* يمنع الإعلان من الانفجار خارج الحاوية عند الزوم */
+          min-width: 380px !important;
           margin: 0 !important;
       }
       .promo-slider-container {
           width: 100% !important;
+          max-height: 400px !important; /* سقف أقصى للارتفاع ليبقى متناسقاً دائماً */
           aspect-ratio: 16 / 9 !important;
-          border-radius: 24px !important;
+          border-radius: 20px !important;
       }
   }
-
   /* ضبط اتجاه السلايدر LTR لضمان انزلاق الصور بشكل سليم دون فراغات */
   .promo-slider-container {
       position: relative; width: 100%; aspect-ratio: 16 / 9;
