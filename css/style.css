@@ -395,3 +395,21 @@
 .icon-choice input{position:absolute;opacity:0;pointer-events:none}
 .icon-choice svg{width:20px;height:20px}
 .icon-choice:hover{border-color:var(--olive-400)}
+/* تنسيق شارة الخيارات لتطفو أسفل صورة المنتج */
+.badge-variants {
+  top: auto !important;
+  bottom: 10px !important;
+  right: 10px !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: var(--olive-800) !important;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid rgba(0,0,0,0.05);
+  backdrop-filter: blur(4px);
+}
+.badge-variants svg {
+  width: 13px !important;
+  height: 13px !important;
+  margin: 0 !important;
+}
