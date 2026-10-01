@@ -53,10 +53,32 @@
 }
 .cat-chip:hover{transform:translateY(-4px);border-color:var(--olive-400);box-shadow:var(--shadow-card)}.cat-chip .cat-icon{width:58px;height:58px;border-radius:18px;background:var(--olive-100);display:grid;place-items:center;color:var(--olive-700);flex-shrink:0}.cat-chip .cat-icon svg{width:28px;height:28px}.cat-chip span.name{font-weight:700;font-size:.92rem;color:var(--ink-700);text-align:center;line-height:1.2}
 
-/* Product cards */
-.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.product-card{min-width:0;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow-soft);transition:.22s ease;position:relative;display:flex;flex-direction:column}.product-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-card);border-color:#d0ddd8}.product-media{display:block;position:relative;aspect-ratio:1/1;background:var(--olive-50);overflow:hidden}.product-media>img{width:100%;height:100%;object-fit:cover;transition:.35s}.product-card:hover .product-media>img{transform:scale(1.035)}.placeholder-icon{height:100%;display:grid;place-items:center;color:var(--olive-400)}.placeholder-icon svg{width:52px;height:52px}.badge{position:absolute;top:11px;right:11px;z-index:2;padding:5px 9px;border-radius:var(--radius-pill);font-size:.67rem;font-weight:800;background:#fff;color:var(--olive-800);box-shadow:0 4px 12px rgba(0,0,0,.08)}.badge-offer{background:var(--danger)!important;color:#fff!important}.badge-new{background:var(--olive-700);color:#fff}.badge-featured{background:var(--sand-500);color:#fff}.badge-out-abs{top:11px;left:11px;right:auto;background:var(--danger);color:#fff}
+/* Product cards — تم تقليل الطول وجعلها شبه مربعة ومضغوطة */
+.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.product-card{
+  min-width:0;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:var(--shadow-soft);
+  transition:.22s ease;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+}
+.product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-card);border-color:#d0ddd8}
+.product-media{display:block;position:relative;aspect-ratio:1/1;background:var(--olive-50);overflow:hidden}
+.product-media>img{width:100%;height:100%;object-fit:cover;transition:.35s}
+.product-card:hover .product-media>img{transform:scale(1.03)}
+.placeholder-icon{height:100%;display:grid;place-items:center;color:var(--olive-400)}.placeholder-icon svg{width:46px;height:46px}
+.badge{position:absolute;top:10px;right:10px;z-index:2;padding:4px 8px;border-radius:var(--radius-pill);font-size:.67rem;font-weight:800;background:#fff;color:var(--olive-800);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.badge-offer{background:var(--danger)!important;color:#fff!important}
+.badge-new{background:var(--olive-700);color:#fff}
+.badge-featured{background:var(--sand-500);color:#fff}
+.badge-out-abs{top:10px;left:10px;right:auto;background:var(--danger);color:#fff}
 
-/* شارة الخيارات المتاحة للمنتج تحت الاسم */
+/* شارة الخيارات المتاحة للمنتج */
 .product-options-chip {
   display: inline-flex;
   align-items: center;
@@ -67,7 +89,7 @@
   font-weight: 700;
   padding: 3px 8px;
   border-radius: 6px;
-  margin: 2px 0 8px;
+  margin: 2px 0 6px;
   border: 1px solid var(--line);
   width: fit-content;
 }
@@ -78,7 +100,42 @@
   flex-shrink: 0;
 }
 
-.product-body{padding:15px;display:flex;flex-direction:column;flex:1}.product-cat{display:block;color:var(--olive-600);font-size:.72rem;font-weight:700;margin-bottom:4px}.product-name{font-size:1rem;margin:0 0 4px;min-height:2.3em;line-height:1.35}.product-name a:hover{color:var(--olive-600)}.product-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:6px}.price,.detail-price{font-weight:800;color:var(--olive-800)}.price{font-size:1rem}.product-actions .btn{width:40px;height:40px;min-height:40px;padding:0;border-radius:50%}.product-desc{color:var(--ink-600);font-size:.82rem}.stock-line{display:flex;align-items:center;gap:7px;color:var(--ink-600);font-size:.8rem}.dot{width:8px;height:8px;border-radius:50%;background:#2ca66f;display:inline-block}.dot-out{background:var(--danger)}
+/* جسم البطاقة */
+.product-body{
+  padding:9px 12px 11px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+.product-cat{display:block;color:var(--olive-600);font-size:.7rem;font-weight:700;margin-bottom:2px}
+.product-name{
+  font-size:.88rem;
+  margin:0 0 2px;
+  min-height:unset;
+  line-height:1.25;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.product-name a:hover{color:var(--olive-600)}
+.product-foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:6px;
+  margin-top:auto;
+  padding-top:4px;
+}
+.price,.detail-price{font-weight:800;color:var(--olive-800)}
+.price{font-size:.95rem}
+.product-actions .btn{
+  width:35px;
+  height:35px;
+  min-height:35px;
+  padding:0;
+  border-radius:50%;
+}
+.product-desc{color:var(--ink-600);font-size:.82rem}.stock-line{display:flex;align-items:center;gap:7px;color:var(--ink-600);font-size:.8rem}.dot{width:8px;height:8px;border-radius:50%;background:#2ca66f;display:inline-block}.dot-out{background:var(--danger)}
 
 /* Feature/contact */
 .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.feature-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow-soft)}.feature-card .icon{width:48px;height:48px;border-radius:14px;background:var(--olive-100);display:grid;place-items:center;color:var(--olive-700);margin-bottom:14px}.feature-card .icon svg{width:23px;height:23px}.feature-card h3{font-size:1rem}.feature-card p{font-size:.83rem;margin:0}.contact-band{padding:30px;border-radius:26px;background:linear-gradient(135deg,var(--olive-800),var(--olive-700));color:#fff;display:flex;align-items:center;justify-content:space-between;gap:25px;box-shadow:var(--shadow-card)}.contact-band h2,.contact-band p{color:#fff}.contact-band p{opacity:.8}.social-row{display:flex;align-items:center;gap:8px}.social-row .btn{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.16);color:#fff}.social-row .btn:hover{background:rgba(255,255,255,.18)}
@@ -110,9 +167,24 @@
 /* Toast */
 .toast{position:fixed;bottom:22px;right:22px;z-index:20000;background:var(--olive-800);color:#fff;padding:11px 17px;border-radius:var(--radius-pill);box-shadow:var(--shadow-lift);font-size:.82rem;opacity:0;transform:translateY(12px);pointer-events:none;transition:.22s}.toast.show{opacity:1;transform:translateY(0)}
 
-/* Homepage promotion slider */
-.promo-slider-container{position:relative;width:100%;aspect-ratio:16/10;border-radius:28px;overflow:hidden;background:var(--olive-50);box-shadow:var(--shadow-lift)}
-.promo-slider-track{display:flex;width:100%;height:100%;transition:transform .45s ease}
+/* Homepage promotion slider — اتجاه LTR لمنع الفراغات */
+.promo-slider-container{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  border-radius:28px;
+  overflow:hidden;
+  background:var(--olive-50);
+  box-shadow:var(--shadow-lift);
+  direction:ltr !important;
+}
+.promo-slider-track{
+  display:flex;
+  width:100%;
+  height:100%;
+  transition:transform .45s ease;
+  direction:ltr !important;
+}
 .promo-slide{flex:0 0 100%;height:100%;position:relative}
 .promo-slide img{width:100%;height:100%;object-fit:cover}
 .promo-dots{position:absolute;bottom:13px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:5}
@@ -419,11 +491,15 @@
   .hero-trust div{flex:1;min-width:120px;padding:8px 10px}
   .cat-chip{width:100px;padding:10px 8px;gap:6px}
   .cat-chip .cat-icon{width:52px;height:52px}
+  
+  /* جعل بطاقات المنتجات شبه مربعة على الموبايل */
   .product-grid{grid-template-columns:repeat(2,1fr);gap:10px}
-  .product-body{padding:11px}
-  .product-name{font-size:.88rem;min-height:2.3em;margin-bottom:5px}
-  .price{font-size:.9rem}
-  .product-actions .btn{width:36px;height:36px;min-height:36px}
+  .product-card{border-radius:16px}
+  .product-body{padding:8px 10px 10px}
+  .product-name{font-size:.84rem;min-height:unset;margin-bottom:2px}
+  .price{font-size:.88rem}
+  .product-actions .btn{width:32px;height:32px;min-height:32px}
+  
   .feature-grid{grid-template-columns:repeat(2,1fr);gap:10px}
   .feature-card{padding:15px}
   .contact-band{padding:22px;flex-direction:column;align-items:flex-start}
@@ -449,8 +525,8 @@
   .brand-name span{display:none}
   .header-inner{gap:8px}
   .product-grid{gap:8px}
-  .product-body{padding:9px}
-  .product-name{font-size:.82rem}
+  .product-body{padding:7px 9px 9px}
+  .product-name{font-size:.8rem}
   .feature-card h3{font-size:.9rem}
   .feature-card p{font-size:.72rem}
   .footer-grid{grid-template-columns:1fr}
