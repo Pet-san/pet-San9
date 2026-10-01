@@ -39,7 +39,7 @@ const STORE_CONFIG = {
   firebaseDatabaseURL: "https://petshop4-bd006-default-rtdb.europe-west1.firebasedatabase.app/",
 
   // === ImgBB (رفع الصور) ===
-  imgbbApiKey: "45c9c2dde4dc15161fe70cc9a99df094",
+  imgbbApiKey: "53a5a9f8ee5d5c4443be4eb275e54418",
 
   // === ImageKit (تحسين وضغط الصور عبر CDN) ===
   imageKitEndpoint: "https://ik.imagekit.io/petshop/"
