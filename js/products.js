@@ -34,7 +34,6 @@ function renderProductCard(product) {
   const hasOptions = totalOptions > 1 || (product.variants && product.variants.length > 0) || Store.hasVariantMatrix(product);
 
   if (hasOptions) {
-    // إرجاع الرقم مع كلمة "خيارات" بحجم صغير ومضغوط متطابق مع الرئيسية
     const labelText = totalOptions > 1 ? (totalOptions + " خيارات") : "خيارات";
     badges.push('<span class="badge badge-variants" style="font-size: 11px; padding: 4px 8px; gap: 4px; bottom: 6px; right: 6px;">' + iconSvg("layers") + '<span>' + labelText + '</span></span>');
   }
@@ -483,14 +482,17 @@ async function initProductDetailPage() {
   if (hasColors) {
     matrixHtml +=
       '<div class="field" style="margin-bottom:16px;">' +
-        '<label style="display:block;margin-bottom:8px;font-weight:600;" for="optionsDropdown">النكهة / النوع:</label>' +
-        '<div style="position:relative;">' +
-          '<select id="optionsDropdown" style="width:100%;padding:12px 16px;border-radius:var(--radius-sm);border:1px solid var(--line-strong);background:var(--white);font-family:var(--font-body);font-size:1rem;color:var(--ink-900);cursor:pointer;appearance:none;outline:none;">' +
-            product.colors.map(function (c) {
-              return '<option value="' + escapeHtml(c.name) + '">' + escapeHtml(c.name) + '</option>';
+        '<label style="display:block;margin-bottom:8px;font-weight:600;">النكهة / النوع:</label>' +
+        '<div id="customColorDropdown" class="custom-theme-dropdown">' +
+          '<button type="button" id="colorDropdownBtn" class="dropdown-trigger-btn">' +
+            '<span id="colorDropdownSelected">' + escapeHtml(product.colors[0].name) + '</span>' +
+            '<span class="dropdown-arrow-icon">▼</span>' +
+          '</button>' +
+          '<ul id="colorDropdownList" class="dropdown-menu-list">' +
+            product.colors.map(function (c, i) {
+              return '<li data-color="' + escapeHtml(c.name) + '" class="dropdown-item ' + (i === 0 ? 'is-selected' : '') + '">' + escapeHtml(c.name) + '</li>';
             }).join('') +
-          '</select>' +
-          '<span style="position:absolute;left:16px;top:50%;transform:translateY(-50%);pointer-events:none;">▼</span>' +
+          '</ul>' +
         '</div>' +
       '</div>';
   }
@@ -613,16 +615,42 @@ async function initProductDetailPage() {
     }
   }
 
-  const optionsDropdown = document.getElementById("optionsDropdown");
-  if (optionsDropdown) {
-    optionsDropdown.addEventListener("change", function () {
-      selectedColor = this.value;
-      const colorObj = product.colors.find(function (c) { return c.name === selectedColor; });
-      const mainImage = document.getElementById("mainProductDetailImage");
-      if (mainImage) {
+  const customColorDropdown = document.getElementById("customColorDropdown");
+  const colorDropdownBtn = document.getElementById("colorDropdownBtn");
+  const colorDropdownList = document.getElementById("colorDropdownList");
+  const colorDropdownSelected = document.getElementById("colorDropdownSelected");
+
+  if (customColorDropdown && colorDropdownBtn && colorDropdownList) {
+    colorDropdownBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const isOpen = colorDropdownList.classList.contains("is-open");
+      colorDropdownList.classList.toggle("is-open", !isOpen);
+      colorDropdownBtn.classList.toggle("is-active", !isOpen);
+    });
+
+    colorDropdownList.querySelectorAll("li").forEach(function (li) {
+      li.addEventListener("click", function () {
+        selectedColor = li.dataset.color;
+        colorDropdownSelected.textContent = selectedColor;
+        
+        colorDropdownList.querySelectorAll("li").forEach(function (el) { el.classList.remove("is-selected"); });
+        li.classList.add("is-selected");
+
+        colorDropdownList.classList.remove("is-open");
+        colorDropdownBtn.classList.remove("is-active");
+
+        const colorObj = product.colors.find(function (c) { return c.name === selectedColor; });
+        const mainImage = document.getElementById("mainProductDetailImage");
+        if (mainImage) {
           mainImage.src = (colorObj && colorObj.image) ? escapeHtml(colorObj.image) : escapeHtml(product.image);
-      }
-      refreshAvailabilityUI();
+        }
+        refreshAvailabilityUI();
+      });
+    });
+
+    document.addEventListener("click", function () {
+      colorDropdownList.classList.remove("is-open");
+      colorDropdownBtn.classList.remove("is-active");
     });
   }
 
