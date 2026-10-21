@@ -5,7 +5,7 @@
 
 const STORE_CONFIG = {
   // رقم إصدار البيانات (زد هذا الرقم 3, 4... عند إجراء حذف أو تعديل شامل للمنتجات لتحديث أجهزة الزوار فوراً)
-  dataVersion: 2,
+  dataVersion: 3,
 
   // اسم المتجر ووصفه — تظهر في الهيدر والفوتر وصفحة "من نحن"
   storeName: "Test",
@@ -13,7 +13,7 @@ const STORE_CONFIG = {
   storeDescription: "متجر إلكتروني يقدم أفضل المنتجات بطلب مباشر عبر واتساب.",
 
   // بيانات التواصل
-  whatsappNumber: "",   // بصيغة دولية بدون + وبدون مسافات، مثال: 9647xxxxxxxxx
+  whatsappNumber: "",    // بصيغة دولية بدون + وبدون مسافات، مثال: 9647xxxxxxxxx
   phone: "",
   instagram: "",
   tiktok: "",
@@ -25,7 +25,7 @@ const STORE_CONFIG = {
   currencySymbol: "د.ع",
 
   // === Firebase Web App / Authentication ===
-  firebaseApiKey: "AIzaSyA2aBIZ4dMwCSXdsEWRfug0C2ZyUnrXR_I",
+    firebaseApiKey: "AIzaSyA2aBIZ4dMwCSXdsEWRfug0C2ZyUnrXR_I",
   firebaseAuthDomain: "petshop4-bd006.firebaseapp.com",
   firebaseProjectId: "petshop4-bd006",
   firebaseStorageBucket: "petshop4-bd006.firebasestorage.app",
@@ -43,4 +43,18 @@ const STORE_CONFIG = {
 
   // === ImageKit (تحسين وضغط الصور عبر CDN) ===
   imageKitEndpoint: "https://ik.imagekit.io/petshop/"
+
+  // === Algolia Search Engine ===
+  algoliaAppId: "OMN0MLR7PE",
+  algoliaSearchKey: "12af33f3ef65f6c90459f089b7301d6f",       // مفتاح البحث فقط (آمن للواجهة العامة)
+  algoliaAdminKey: "44dc546894c94620675e5a9112264cc1",         // مفتاح الإدارة للوحة التحكم فقط
+  algoliaIndexName: "products",
+
+  // === ضوابط المعمارية الهجينة والمنتجات ===
+  // الحد الفاصل للتحويل التلقائي إلى Algolia:
+  // ما دون هذا الرقم يعمل محلياً ومجاناً، وما فوقه يتحول تلقائياً إلى خوادم Algolia
+  algoliaThreshold: 200000,
+
+  // الحد الأقصى للمنتجات المستوردة من الإكسل
+  maxExcelImportCount: 100                       
 };

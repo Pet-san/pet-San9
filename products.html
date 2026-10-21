@@ -1,59 +1,45 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QZZ06E5B02"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9574QJNE8H"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-QZZ06E5B02');
+  gtag('config', 'G-9574QJNE8H');
 </script>
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>المنتجات | متجرك الإلكتروني</title>
-  <link rel="icon" href="assets/logo/logo.png">
-  <link rel="stylesheet" href="css/style.css?v=41">
-  <style>
-    .shop-cat-tabs-wrap {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 12px;
-      margin-bottom: 20px;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-    }
-    .shop-cat-tabs-wrap::-webkit-scrollbar { display: none; }
-    .shop-tab-btn {
-      padding: 8px 18px;
-      border-radius: var(--radius-pill);
-      border: 1px solid var(--line);
-      background: var(--white);
-      color: var(--ink-700);
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.2s ease;
-    }
-    .shop-tab-btn.active {
-      background: var(--olive-700);
-      color: var(--white);
-      border-color: var(--olive-700);
-    }
-    #shopGrid.is-updating {
-      opacity: 0.5;
-      transition: opacity 0.2s ease;
-    }
-  </style>
+  <title>المنتجات | Pet San</title>
+
+  <!-- PWA & Mobile Web App Meta -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#172554">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Pet San">
+
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/logo/logo.png?v=80">
+  <link rel="shortcut icon" type="image/png" href="assets/logo/logo.png?v=80">
+  <link rel="apple-touch-icon" href="assets/logo/logo.png?v=80">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/logo/logo.png?v=80">
+
+  <!-- Arabic UI font (same on every page; non-blocking) -->
+  <link rel="preconnect" href="https://test3-2a6de-default-rtdb.europe-west1.firebasedatabase.app" crossorigin>
+  <link rel="preconnect" href="https://ik.imagekit.io" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"></noscript>
+  <link rel="stylesheet" href="css/style.css?v=80">
+  <link rel="stylesheet" href="css/refresh.css?v=80">
 </head>
 <body>
-
-<!-- Sidebar overlay -->
-<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
 
 <div id="site-header" data-active="products"></div>
 
@@ -93,13 +79,13 @@
 
 <div id="site-footer"></div>
 
-<script src="js/config.js?v=41"></script>
-<script src="js/icons.js?v=41"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-<script src="js/store.js?v=41"></script>
-<script src="js/whatsapp.js?v=41"></script>
-<script src="js/app.js?v=41"></script>
-<script src="js/products.js?v=41"></script>
+<!-- سكربتات مؤجلة (defer): لا تحجب الرسم. القراءة من Firebase عبر REST داخل store.js (بدون SDK) -->
+<script src="js/config.js?v=80" defer></script>
+<script src="js/icons.js?v=80" defer></script>
+<script src="js/store.js?v=80" defer></script>
+<script src="js/whatsapp.js?v=80" defer></script>
+<script src="js/app.js?v=80" defer></script>
+<script src="js/products.js?v=80" defer></script>
+<script src="js/pwa-install.js?v=80" defer></script>
 </body>
 </html>

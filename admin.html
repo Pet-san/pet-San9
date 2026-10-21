@@ -3,130 +3,34 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
-  <title>لوحة تحكم الأدمن | متجرك الإلكتروني</title>
-  <link rel="icon" href="assets/logo/logo.png">
-  <link rel="stylesheet" href="css/style.css?v=42">
-<style>
-  html, body {
-      overflow-x: hidden !important;
-      max-width: 100vw !important;
-  }
-  .admin-main, .admin-shell {
-      min-width: 0 !important;
-      width: 100% !important;
-      max-width: 100vw !important;
-  }
-  .admin-panel {
-      min-width: 0 !important;
-      width: 100% !important;
-  }
-  .modal-overlay {
-      display: none;
-      align-items: center !important;
-      justify-content: center !important;
-      padding: 15px !important;
-      position: fixed !important;
-      inset: 0 !important;
-      width: 100vw !important;
-      height: 100vh !important;
-      box-sizing: border-box !important;
-      z-index: 10005 !important;
-  }
-  .modal-overlay.open {
-      display: flex !important;
-  }
-  .modal-card {
-      margin: 0 !important;
-      position: relative !important;
-      width: 100% !important;
-      max-width: 90vw !important;
-  }
-  .row-actions {
-      flex-wrap: nowrap !important;
-  }
-  .row-actions .btn-icon svg {
-      width: 20px !important;
-      height: 20px !important;
-      stroke-width: 2.2 !important;
-      flex-shrink: 0 !important;
-  }
-  .admin-logout svg {
-      width: 22px !important;
-      height: 22px !important;
-      flex-shrink: 0 !important;
-  }
-  .admin-logout a, .admin-logout button {
-      display: flex !important;
-      align-items: center !important;
-      gap: 10px !important;
-      text-align: right !important;
-  }
-
-  .admin-table td:first-child {
-      width: 60px !important;
-      min-width: 60px !important;
-  }
-  .admin-table-icon {
-      width: 48px !important;
-      height: 48px !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      background: var(--olive-50) !important;
-      border-radius: 9px !important;
-      color: var(--olive-700) !important;
-      flex-shrink: 0 !important;
-  }
-  .admin-table-icon svg {
-      width: 24px !important;
-      height: 24px !important;
-      max-width: 24px !important;
-      max-height: 24px !important;
-  }
-  .preview svg {
-      width: 38px !important;
-      height: 38px !important;
-      color: var(--ink-300) !important;
-  }
-
-  @media (max-width: 900px) {
-      .admin-sidebar {
-          position: fixed !important;
-          top: 0 !important;
-          bottom: 0 !important;
-          right: -300px !important;
-          width: 280px !important;
-          max-width: 85vw !important;
-          z-index: 10000 !important;
-          transition: right 0.3s ease-in-out !important;
-          box-shadow: -5px 0 25px rgba(0,0,0,0.3) !important;
-      }
-      .admin-sidebar.open {
-          right: 0 !important;
-      }
-      .admin-close-sidebar {
-          display: inline-flex !important;
-      }
-  }
-  @media (min-width: 901px) {
-      .admin-close-sidebar {
-          display: none !important;
-      }
-  }
-</style>
+  <title>لوحة تحكم الأدمن | كوزمتك احمد مشتاق</title>
+<link rel="icon" type="image/png" sizes="192x192" href="assets/logo/logo.png?v=78">
+<link rel="shortcut icon" type="image/png" href="assets/logo/logo.png?v=78">
+<link rel="apple-touch-icon" href="assets/logo/logo.png?v=78">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/logo/logo.png?v=78">
+    <!-- Arabic UI font (same on every page; non-blocking) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap"></noscript>
+<link rel="stylesheet" href="css/style.css?v=79">
+  <link rel="stylesheet" href="css/refresh.css?v=79">
 </head>
 <body>
 
 <div id="adminApp" class="admin-shell">
   
+  <!-- الخلفية الشفافة المظلمة للقائمة الجانبية في الهاتف -->
   <div class="sidebar-overlay" onclick="toggleAdminSidebar()"></div>
 
+  <!-- ============ Sidebar ============ -->
   <aside class="admin-sidebar" id="adminSidebar">
     <div class="brand" style="display:flex; align-items:center; justify-content:space-between; width:100%;">
       <div style="display:flex; align-items:center; gap:10px;">
-        <img src="assets/logo/logo.png" alt="شعار المتجر" style="width:40px;height:40px;border-radius:50%;">
-        <span class="brand-name">متجرك الإلكتروني<span style="color:rgba(255,255,255,.55);">لوحة التحكم</span></span>
+        <img src="assets/logo/logo.png?v=78" alt="شعار المتجر" style="width:40px;height:40px;border-radius:50%;">
+        <span class="brand-name">كوزمتك احمد مشتاق<span style="color:rgba(255,255,255,.55);">لوحة التحكم</span></span>
       </div>
+      <!-- زر إغلاق القائمة الجانبية في الموبايل -->
       <button type="button" class="btn-icon btn-sm admin-close-sidebar" onclick="toggleAdminSidebar()" title="إغلاق القائمة" style="background:rgba(255,255,255,.1); border:none; color:#fff; cursor:pointer;">__ICON_CLOSE__</button>
     </div>
 
@@ -145,12 +49,14 @@
     </div>
   </aside>
 
+  <!-- ============ Main ============ -->
   <main class="admin-main">
     <div class="admin-topbar" style="display:flex; align-items:center; gap:12px;">
       <button class="btn-icon" id="adminSidebarToggle" title="فتح القائمة">__ICON_MENU__</button>
       <h2 style="margin:0;">مرحبًا بك 👋</h2>
     </div>
 
+    <!-- ---- Dashboard panel ---- -->
     <section class="admin-panel-view" id="panel-dashboard">
       <div class="admin-stats" id="statsRow"></div>
       <div class="admin-panel">
@@ -164,6 +70,7 @@
                 <th>النوع</th>
                 <th>المنتجات</th>
                 <th>الإجمالي</th>
+                <th>حالة الطلب</th>
               </tr>
             </thead>
             <tbody id="ordersTableBody"></tbody>
@@ -172,24 +79,33 @@
       </div>
     </section>
 
+    <!-- ---- Products panel ---- -->
     <section class="admin-panel-view" id="panel-products" style="display:none;">
       <div class="admin-panel">
         <div class="panel-head">
           <h3 style="margin:0;">إدارة المنتجات</h3>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
             <input type="text" id="adminProductSearch" placeholder="بحث عن منتج..." style="padding:9px 14px;border-radius:999px;border:1px solid var(--line-strong);font-family:inherit;">
+            
+            <!-- زر استيراد وتحديث الأسعار والمخزون من ملف الإكسل -->
+            <label class="btn btn-outline btn-sm" style="cursor:pointer; display:inline-flex; align-items:center; gap:6px; margin:0;" title="تحديث الأسعار والكميات تلقائياً عبر ملف إكسل أو CSV">
+              <span>📊 استيراد إكسل</span>
+              <input type="file" id="excelSyncInput" accept=".xlsx, .xls, .csv" style="display:none;">
+            </label>
+
             <button class="btn btn-primary btn-sm" id="addProductBtn">__ICON_PLUS__ إضافة منتج</button>
           </div>
         </div>
         <div style="overflow-x:auto;">
           <table class="admin-table">
-            <thead><tr><th>الصورة</th><th>الاسم</th><th>القسم</th><th>السعر</th><th>الكمية</th><th>الحالة</th><th>إجراءات</th></tr></thead>
+            <thead><tr><th>الصورة</th><th>الباركود</th><th>الاسم</th><th>القسم</th><th>السعر</th><th>الكمية</th><th>الحالة</th><th>إجراءات</th></tr></thead>
             <tbody id="productsTableBody"></tbody>
           </table>
         </div>
       </div>
     </section>
 
+    <!-- ---- Categories panel ---- -->
     <section class="admin-panel-view" id="panel-categories" style="display:none;">
       <div class="admin-panel">
         <div class="panel-head">
@@ -205,6 +121,7 @@
       </div>
     </section>
 
+    <!-- ---- Ads panel ---- -->
     <section class="admin-panel-view" id="panel-ads" style="display:none;">
       <div class="admin-panel">
         <div class="panel-head">
@@ -221,6 +138,7 @@
       </div>
     </section>
 
+    <!-- ---- Orders panel ---- -->
     <section class="admin-panel-view" id="panel-orders" style="display:none;">
       <div class="admin-panel">
         <div class="panel-head"><h3 style="margin:0;">سجلّ الطلبات</h3></div>
@@ -234,6 +152,7 @@
                 <th>النوع</th>
                 <th>المنتجات</th>
                 <th>الإجمالي</th>
+                <th>حالة الطلب</th>
               </tr>
             </thead>
             <tbody id="ordersTableBody2"></tbody>
@@ -242,6 +161,7 @@
       </div>
     </section>
 
+    <!-- ---- Settings panel ---- -->
     <section class="admin-panel-view" id="panel-settings" style="display:none;">
       <div class="admin-panel" style="max-width:640px;">
         <div class="panel-head"><h3 style="margin:0;">إعدادات المتجر</h3></div>
@@ -253,13 +173,15 @@
           <div class="field"><label>رابط انستغرام</label><input name="instagram" placeholder="https://instagram.com/yourstore"></div>
           <div class="field"><label>رابط تيك توك</label><input name="tiktok" placeholder="https://www.tiktok.com/@yourstore"></div>
           <div class="field"><label>رقم الهاتف</label><input name="phone"></div>
-          <div class="field"><label>العنوان</label><input name="address"></div>
+          <div class="field"><label>رقم هاتف ثاني (اختياري)</label><input name="phone2"></div>
+          <div class="field"><label>العنوان</label><input name="address" placeholder="مثال: كربلاء - حي الأطباء"></div>
+          <div class="field"><label>رابط الموقع على الخرائط (اختياري)</label><input name="mapUrl" dir="ltr" placeholder="https://maps.app.goo.gl/..."><div class="field-hint">افتح المكان في خرائط جوجل ← مشاركة ← نسخ الرابط، ثم الصقه هنا. يصبح العنوان قابلاً للضغط ويفتح الخرائط مباشرة.</div></div>
           <div class="field"><label>ساعات العمل</label><input name="workingHours"></div>
           <div class="field"><label>معلومات التوصيل</label><textarea name="deliveryInfo"></textarea></div>
           <div class="field"><label>رمز العملة</label><input name="currencySymbol"></div>
 
           <hr style="border:none;border-top:1px solid var(--line);margin:22px 0;">
-          <div class="field-hint">تسجيل دخول الأدمن تتم إدارته الآن عبر قاعدة البيانات. تغيير كلمة المرور يتم من حساب قاعدة البيانات، وليس من بيانات المتجر.</div>
+          <div class="field-hint"></div>
 
           <button type="submit" class="btn btn-primary btn-block">حفظ الإعدادات</button>
         </form>
@@ -288,32 +210,41 @@
         </div>
       </div>
       
+      <!-- ============ إضافة حقل الصور المتعددة ============ -->
       <div class="field">
         <label>صور إضافية للمنتج (اختياري)</label>
         <input type="file" id="productExtraImagesInput" accept="image/*" multiple>
         <div id="extraImagesPreview" style="display: flex; gap: 5px; margin-top: 10px; flex-wrap: wrap;"></div>
       </div>
+      <!-- =================================================== -->
+
+      <!-- حقل الباركود / كود المادة SKU لربطه بنظام المحاسبة والإكسل -->
+      <div class="field">
+        <label>الباركود / SKU (اختياري — للمزامنة مع نظام المحاسبة)</label>
+        <input type="text" id="productBarcode" placeholder="امسح بالباركود أو اكتب الكود هنا...">
+      </div>
 
       <div class="field"><label>اسم المنتج</label><input type="text" id="productName" required></div>
       <div class="field"><label>الوصف</label><textarea id="productDescription"></textarea></div>
       <div class="field"><label>السعر (د.ع)</label><input type="number" id="productPrice" min="0" required></div>
+      <div class="field"><label>السعر القديم قبل الخصم (اختياري)</label><input type="number" id="productOldPrice" min="0" placeholder="يظهر مشطوباً بجانب السعر عند تفعيل «عرض خاص»"></div>
       <div class="field"><label>القسم</label><select id="productCategorySelect" required></select></div>
       
       <div class="field">
         <label style="display:flex;justify-content:space-between;align-items:center;">
-          الخيارات الأساسية (اختياري — مثال: نكهة الدجاج، السلمون)
-          <button type="button" id="addColorBtn" class="btn btn-outline btn-sm">+ إضافة خيار</button>
+          الألوان (اختياري — مثال: منتجات الملابس)
+          <button type="button" id="addColorBtn" class="btn btn-outline btn-sm">+ إضافة لون</button>
         </label>
         <div id="colorsList" style="display:flex;flex-direction:column;gap:10px;"></div>
       </div>
 
       <div class="field">
-        <label>الخيارات الفرعية كالأوزان (اختياري) — افصل بينها بفاصلة</label>
-        <input type="text" id="productSizes" placeholder="مثال: 1.5kg, 3kg, 7kg">
+        <label>الاحجام (اختياري) — افصل بينها بفاصلة</label>
+        <input type="text" id="productSizes" placeholder="مثال: S, M, L, XL">
       </div>
 
       <div class="field" id="inventoryWrap" style="display:none;">
-        <label>المخزون حسب الخيار والوزن</label>
+        <label>المخزون حسب اللون و الحجم</label>
         <div id="inventoryGrid" style="overflow-x:auto;"></div>
         <p class="field-hint">إجمالي المخزون أدناه يُحسب تلقائيًا من هذه الكميات.</p>
       </div>
@@ -394,17 +325,21 @@
   </div>
 </div>
 
-<script src="js/config.js?v=42"></script>
-<script src="js/icons.js?v=42"></script>
+<!-- مكتبة SheetJS لقراءة وتفكيك ملفات Excel و CSV مباشرة في المتصفح -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+<script src="js/config.js?v=77"></script>
+<script src="js/icons.js?v=77"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-<script src="js/store.js?v=42"></script>
-<script src="js/whatsapp.js?v=42"></script>
-<script src="js/app.js?v=42"></script>
-<script src="js/auth.js?v=42"></script>
-<script src="js/admin.js?v=42"></script>
+<script src="js/store.js?v=77"></script>
+<script src="js/whatsapp.js?v=77"></script>
+<script src="js/app.js?v=77"></script>
+<script src="js/auth.js?v=77"></script>
+<script src="js/admin.js?v=77"></script>
 <script>
+  // تعبئة الأيقونات الثابتة
   document.querySelector(".admin-nav").innerHTML = document.querySelector(".admin-nav").innerHTML
     .replace("__ICON_GAUGE__", iconSvg("gauge"))
     .replace("__ICON_BOX__", iconSvg("box"))
@@ -419,6 +354,7 @@
 
   document.getElementById("adminSidebarToggle").innerHTML = iconSvg("menu");
   
+  // زر إغلاق القائمة الجانبية للأدمن في الموبايل
   const closeSidebarBtn = document.querySelector(".admin-close-sidebar");
   if (closeSidebarBtn) {
     closeSidebarBtn.innerHTML = iconSvg("close");
@@ -442,16 +378,7 @@
       document.getElementById("removeAdImageBtn").innerHTML = iconSvg("trash");
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const original = renderOrdersTable;
-    renderOrdersTable = function () {
-      original();
-      const src = document.getElementById("ordersTableBody");
-      const dst = document.getElementById("ordersTableBody2");
-      if (src && dst) dst.innerHTML = src.innerHTML;
-    };
-    renderOrdersTable();
-  });
+  // ملاحظة: renderOrdersTable() في admin.js تكتب الآن في الجدولين (ordersTableBody و ordersTableBody2).
 </script>
 </body>
 </html>
