@@ -4,13 +4,13 @@
    ========================================================================== */
 
 const STORE_CONFIG = {
-  // رقم إصدار البيانات (زد هذا الرقم 3, 4... عند إجراء حذف أو تعديل شامل للمنتجات لتحديث أجهزة الزوار فوراً)
+  // رقم إصدار البيانات
   dataVersion: 3,
 
-  // اسم المتجر ووصفه — تظهر في الهيدر والفوتر وصفحة "من نحن"
-  storeName: "Test",
-  storeTagline: "تجربة تسوق بسيطة، واضحة ومباشرة",
-  storeDescription: "متجر إلكتروني يقدم أفضل المنتجات بطلب مباشر عبر واتساب.",
+  // اسم المتجر ووصفه
+  storeName: "Pet San",
+  storeTagline: "كل ما يحتاجه صديقك الأليف",
+  storeDescription: "متجر إلكتروني يقدم أفضل مستلزمات الحيوانات الأليفة بطلب مباشر عبر واتساب.",
 
   // بيانات التواصل
   whatsappNumber: "",    // بصيغة دولية بدون + وبدون مسافات، مثال: 9647xxxxxxxxx
@@ -25,14 +25,14 @@ const STORE_CONFIG = {
   currencySymbol: "د.ع",
 
   // === Firebase Web App / Authentication ===
-    firebaseApiKey: "AIzaSyA2aBIZ4dMwCSXdsEWRfug0C2ZyUnrXR_I",
+  firebaseApiKey: "AIzaSyA2aBIZ4dMwCSXdsEWRfug0C2ZyUnrXR_I",
   firebaseAuthDomain: "petshop4-bd006.firebaseapp.com",
   firebaseProjectId: "petshop4-bd006",
   firebaseStorageBucket: "petshop4-bd006.firebasestorage.app",
   firebaseMessagingSenderId: "732533658054",
   firebaseAppId: "1:732533658054:web:583c7a5a175bbf53eae2c7",
-  
-  // حسابات الأدمن المسموح لها بدخول لوحة التحكم
+
+  // حسابات الأدمن المسموح لها بدخول لوحة التحكم (تأكد أن الإيميل يطابق حسابك تماماً وبأحرف صغيرة)
   adminEmails: ["a@email.com"],
 
   // === Firebase Realtime Database ===
@@ -42,19 +42,14 @@ const STORE_CONFIG = {
   imgbbApiKey: "53a5a9f8ee5d5c4443be4eb275e54418",
 
   // === ImageKit (تحسين وضغط الصور عبر CDN) ===
-  imageKitEndpoint: "https://ik.imagekit.io/petshop/"
+  imageKitEndpoint: "https://ik.imagekit.io/petshop",
 
   // === Algolia Search Engine ===
   algoliaAppId: "OMN0MLR7PE",
-  algoliaSearchKey: "12af33f3ef65f6c90459f089b7301d6f",       // مفتاح البحث فقط (آمن للواجهة العامة)
-  algoliaAdminKey: "44dc546894c94620675e5a9112264cc1",         // مفتاح الإدارة للوحة التحكم فقط
+  algoliaSearchKey: "12af33f3ef65f6c90459f089b7301d6f",
+  algoliaAdminKey: "", // يُترك فارغاً هنا للأمان
   algoliaIndexName: "products",
 
-  // === ضوابط المعمارية الهجينة والمنتجات ===
-  // الحد الفاصل للتحويل التلقائي إلى Algolia:
-  // ما دون هذا الرقم يعمل محلياً ومجاناً، وما فوقه يتحول تلقائياً إلى خوادم Algolia
-  algoliaThreshold: 200000,
-
   // الحد الأقصى للمنتجات المستوردة من الإكسل
-  maxExcelImportCount: 100                       
+  maxExcelImportCount: 100
 };
